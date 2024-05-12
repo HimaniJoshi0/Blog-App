@@ -1,8 +1,10 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "../../components/inputField";
+import { notification } from "antd";
+import { services } from "../../services";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -20,7 +22,40 @@ const validationSchema = Yup.object().shape({
     .required("Confirm Password is required"),
 });
 
-const MyForm = () => (
+  
+const MyForm = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values) => {
+    try {
+      const response = await services("post", values, "register");
+      console.log("-----response-----", response);
+      if (response.status) {
+        notification.success({
+          message: "Register Successfull",
+          placement: "topRight",
+        });
+        navigate("/login")
+         
+      } else {
+        notification.error({
+          message: "Register Failed",
+          description: response.message,
+          placement: "topRight",
+        });
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      notification.error({
+        message: "Error",
+        description: "An error occurred. Please try again later.",
+        placement: "topRight",
+      });
+    }
+  };
+
+
+return (
   <div className="flex justify-center items-center  h-screen w-full">     
   <div className='bg-green-200 w-[50%] h-[100%] flex justify-center items-center'>
    <h1>image</h1>
@@ -41,12 +76,8 @@ const MyForm = () => (
         confirmPassword: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setSubmitting(true);
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={(values) => {
+        handleSubmit(values);
       }}
     >
       {() => (
@@ -82,6 +113,7 @@ const MyForm = () => (
   </div>
   </div>
   </div>
-);
+)
+};
 
 export default MyForm;
