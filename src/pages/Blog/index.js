@@ -37,7 +37,7 @@ const Blog = () => {
 
       <Modal
         title="Create Blog"
-        open={true}
+        open={open}
         onClose={() => console.log("hiii")}
         onOk={() => {
           console.log("hiiii");

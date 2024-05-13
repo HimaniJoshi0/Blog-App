@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import TextField from "../inputField";
-import { ErrorMessage, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { Select, Space } from "antd";
 import { services } from "../../services";
+import { Option } from "antd/es/mentions";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
   description: Yup.string().required("Description is required"),
-  file: Yup.mixed().required("File is required"),
-  // category: Yup.array()
-  //   .required("Category is required")
-  //   .min(1, "Please select at least one category"),
+  file: Yup.mixed().required("Please select a file"),
+  category: Yup.array()
+    .required("Category is required")
+    .min(1, "Please select at least one category"),
 });
 
 const CreateBlogForm = () => {
   const [fieldValue, setFieldValue] = useState();
-  const [category, setCategory] = useState([]);
 
   const handleSubmit = async (values) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const payload = {
-      user_id: user.id,
+      user_id: user?.id || 1,
       title: values.title,
       summary: values.description,
-      categories: category,
+      categories: values.category,
       created_on: new Date().toISOString(),
       file: fieldValue,
     };
     try {
       // console.log("-------category-------",payload.categories)
       const response = await services("post", payload, "add-blog");
-      console.log( response);
+      console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -56,16 +56,18 @@ const CreateBlogForm = () => {
     },
   ];
 
-  const handleChange = (values) => {
-    console.log("values", values);
-    setCategory(values);
+  const handleChange = (event) => {
+    const file = event.currentTarget.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64String = reader.result;
+      console.log("base64String", base64String);
+      setFieldValue(base64String);
+    };
+
+    reader.readAsDataURL(file);
   };
-
-
-  // const handleFileChange = (event) => {
-  //   const selectedFile = event.currentTarget.files[0];
-  //   setFile(selectedFile);
-  // };
 
   return (
     <div className="w-[30rem] border-2">
@@ -81,42 +83,43 @@ const CreateBlogForm = () => {
           <Form>
             <TextField name="title" label="Title" type="text" />
             <TextField name="description" label="Description" type="text" />
-            <Select
-              name="category"
-              mode="multiple"
-              allowClear
-              style={{
-                width: "100%",
-              }}
-              placeholder="Please select"
-              // defaultValue={["a10", "c12"]}
-              onChange={handleChange}
-              options={options}
-            />
+            <Field name="category">
+              {({ field, form }) => (
+                <Select
+                  {...field}
+                  mode="multiple"
+                  allowClear
+                  style={{ width: "100%" }}
+                  placeholder="Please select"
+                  onChange={(value) => form.setFieldValue("category", value)}
+                  onBlur={() => form.setFieldTouched("category", true)}
+                >
+                  {options.map((option) => (
+                    <Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Option>
+                  ))}
+                </Select>
+              )}
+            </Field>
             <ErrorMessage
               name="category"
               component="div"
               className="text-red-600"
             />
 
-            <input
-              id="file"
-              name="file"
-              type="file"
-              onChange={(event) => {
-                const file = event.currentTarget.files[0];
-                const reader = new FileReader();
-
-                reader.onload = () => {
-                  const base64String = reader.result.split(",")[1];
-
-                  setFieldValue(base64String);
-                  // handleFileChange(event);
-                };
-
-                reader.readAsDataURL(file);
-              }}
-            />
+            <Field name="file">
+              {({ field, form }) => (
+                <input
+                  type="file"
+                  // {...field}
+                  onChange={(value) => {
+                    form.setFieldValue("file", value);
+                    handleChange(value);
+                  }}
+                />
+              )}
+            </Field>
             <ErrorMessage
               name="file"
               component="div"

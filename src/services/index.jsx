@@ -7,7 +7,7 @@ export const services= async (method,data,path)=>{
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: data? JSON.stringify(data) : null,
           });
           console.log("response")
           return response.json()
