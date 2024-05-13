@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { Select, Space } from "antd";
 import { services } from "../../services";
 import { Option } from "antd/es/mentions";
+import { Spin } from "antd";
+import { notification } from "antd";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -15,10 +17,12 @@ const validationSchema = Yup.object().shape({
     .min(1, "Please select at least one category"),
 });
 
-const CreateBlogForm = () => {
+const CreateBlogForm = ({ setOpen }) => {
   const [fieldValue, setFieldValue] = useState();
+  const [loader, setLoader] = useState(false);
 
   const handleSubmit = async (values) => {
+    setLoader(true);
     const user = JSON.parse(localStorage.getItem("user"));
     const payload = {
       user_id: user?.id || 1,
@@ -26,14 +30,19 @@ const CreateBlogForm = () => {
       summary: values.description,
       categories: values.category,
       created_on: new Date().toISOString(),
-      file: fieldValue,
+      image: fieldValue,
     };
     try {
-      // console.log("-------category-------",payload.categories)
       const response = await services("post", payload, "add-blog");
       console.log(response);
+      notification.success({
+        message: "Blog created successful",
+        placement: "topRight",
+      });
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -125,7 +134,15 @@ const CreateBlogForm = () => {
               component="div"
               className="text-red-600"
             />
-            <button type="submit">Add</button>
+            {loader ? (
+              <div className="example">
+                <Spin />
+              </div>
+            ) : (
+              <button type="submit" onClick={() => setOpen(false)}>
+                Add
+              </button>
+            )}
           </Form>
         )}
       </Formik>

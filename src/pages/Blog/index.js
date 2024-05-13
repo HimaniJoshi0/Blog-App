@@ -48,7 +48,7 @@ const Blog = () => {
           setOpen(false);
         }}
       >
-        <CreateBlogForm/> 
+        <CreateBlogForm setOpen={setOpen}/> 
       </Modal>
     </div>
   );
