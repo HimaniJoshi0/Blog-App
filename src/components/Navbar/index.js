@@ -29,7 +29,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="h-[60px] w-full flex items-center justify-center ">
+    <div className="h-[70px] w-full flex items-center justify-center shadow-xl">
       <div className="w-[90%] flex items-center justify-between  h-full">
         <div>
           <p className="font-bold text-xl">THE BLOGS</p>
@@ -43,11 +43,14 @@ const Navbar = () => {
             <Button>A</Button>
           </Popover>
         ) : (
-          <div>
-            <Link to="/login">
-              {" "}
-              <p>LOGIN</p>
+          <div className="flex flex-row w-[40%]">
+            <input type="text" className="p-2 bg-gray-100 w-[80%] rounded-md text-sm outline-none" placeholder="search for your blog" ></input>
+            <div className="flex justify-center items-center  w-[40%]">
+            <Link to="/login ">
+              <p className="font-bold ">LOGIN</p>
             </Link>
+            </div>
+            
           </div>
         )}
       </div>
