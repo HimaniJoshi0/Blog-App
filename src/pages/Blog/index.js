@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Blogs from "../../components/Blogs";
-import { Button, Modal } from "antd";
-import CreateBlogForm from "../../components/CreateBlogForm";
+import {  Modal } from "antd";
 import { services } from "../../services";
+import ClientSlider from "components/crousal";
 
 const Blog = () => {
   const [checkDetails, setCheckDetails] = useState();
@@ -33,43 +33,39 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className=" w-full mt-6">
-      <div className="w-full flex justify-center items-center">
-        <div className="w-[90%] flex ">
-          <h1 className="text-8xl font-bold text-center p-5 w-[90%] m-auto ">
-            THE BLOGS
-          </h1>
-          {checkDetails && (
-            <p onClick={() => setOpen(true)} className="cursor-pointer">
-              Create
-            </p>
-          )}
-        </div>
+    <>
+      <div className="mt-6">{/* <h3>Recent Blogs</h3> */}</div>
+      <div className="p-10 flex justify-center">
+        <ClientSlider />
       </div>
-
-      <div className="w-full  flex flex-col justify-center items-center mt-8 ">
-        <div className="w-[83%] my-5">
-          <h1 className="font-bold">All blogs post</h1>
-        </div>
+      <div className=" w-full mt-6">
+        {/* <div className="w-full flex justify-center items-center">
+          <div className="w-[90%] flex ">
+            {checkDetails && (
+              <p onClick={() => setOpen(true)} className="cursor-pointer">
+                Create
+              </p>
+            )}
+          </div>
+        </div> */}
         <Blogs allBlogs={allBlogs} loading={loading} />
+        <Modal
+          title="Create Blog"
+          open={open}
+          onClose={() => console.log("hiii")}
+          onOk={() => {
+            console.log("hiiii");
+          }}
+          okButtonProps={{ hidden: true }}
+          cancelButtonProps={{ hidden: true }}
+          onCancel={() => {
+            setOpen(false);
+          }}
+        >
+          {/* <CreateBlogForm setOpen={setOpen} /> */}
+        </Modal>
       </div>
-
-      <Modal
-        title="Create Blog"
-        open={open}
-        onClose={() => console.log("hiii")}
-        onOk={() => {
-          console.log("hiiii");
-        }}
-        okButtonProps={{ hidden: true }}
-        cancelButtonProps={{ hidden: true }}
-        onCancel={() => {
-          setOpen(false);
-        }}
-      >
-        <CreateBlogForm setOpen={setOpen} />
-      </Modal>
-    </div>
+    </>
   );
 };
 

@@ -12,3 +12,37 @@
   margin: 0;
   padding: 0;
 } */
+
+svg text {
+  text-transform: uppercase;
+  animation: stroke 5s;
+  stroke-width: 2;
+  stroke: #fff;
+}
+@keyframes stroke {
+  0% {
+    stroke: #fff;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  70% {
+    stroke: #fff;
+  }
+  80% {
+    stroke: #fff;
+    stroke-width: 2.5;
+  }
+  100% {
+    stroke: #fff;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+  }
+}
+
+.hero-section {
+  background-image: url("/public/images/bgimage.jpg");
+  background-position: bottom;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.363);
+}
