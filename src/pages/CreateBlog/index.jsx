@@ -45,7 +45,7 @@ const CreateBlogForm = ({ setOpen }) => {
     // };
     try {
       const response = await fetch(
-        `https://cart-app-eta-eight.vercel.app/add-blog`,
+        `${process.env.REACT_APP_BASE_URL}add-blog`,
         {
           method: "post",
           mode: "cors",

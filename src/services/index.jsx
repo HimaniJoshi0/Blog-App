@@ -2,7 +2,7 @@ export const services = async (method, data, path) => {
   console.log("data", data);
   try {
     const response = await fetch(
-      `https://cart-app-eta-eight.vercel.app/${path}`,
+      `${process.env.REACT_APP_BASE_URL}${path}`,
       {
         method: method,
         mode: "cors",
