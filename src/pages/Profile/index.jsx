@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { services } from "../../services";
 import Blogs from "../../components/Blogs";
+import HeroSection from "components/hero-section";
+import profileImage from "assets/images/profileImage.png";
+
 
 const Profile = () => {
   const [user, setUser] = useState();
@@ -36,38 +39,16 @@ const Profile = () => {
     getBlogs(userDetails.id);
   }, []);
 
-  // const renderBlogs =(item,key)=>{
-  //   console.log("--item.created_on---", item.created_on)
-  //   return(
-  //     <div className=' w-[30%] h-[400px] bg-white'>
-  //     <div className='bg-white w-full h-[60%] flex justify-center items-center'>
-  //       <img src={item.image} alt="image" className='w-full h-full'></img>
-  //     </div>
-  //     <div className='mt-6'>
-  //         <div className='my-2'> <p className='font-bold text-purple-800'>{dayjs(item.created_on , 'YYYY-MM-DD h:mma').format('MMMM D, YYYY')}</p> </div>
-  //         <div className='flex'>
-  //           {
-  //             item.categories.map((item,values)=>{
-  //               return(
-  //                 <div className=" mr-2">
-  //                 <div>{item}</div>
-  //                 </div>
-  //               )
-  //             })
-  //           }
-  //         </div>
-  //         {/* <div className='my-2'> <p className='font-bold'>{item.categories}</p> </div>     */}
-  //         <div className='my-2'>  <h1 className='text-2xl font-bold'>{item.title}</h1> </div>
-  //         <div className='my-2'>
-  //         <p>{item.summary}</p>
-  //         </div>
 
-  //     </div>
-  // </div>
-  //   )
-  // }
 
   return (
+    <>
+    <div className="hero-section-profile h-[12rem] md:h-[9rem] lg:h-[21rem] -mt-[6rem] relative">
+        <div className="h-[12rem] w-[12rem] bg-slate-50 rounded-full absolute bottom-[-3.5rem] left-[20rem] overflow-hidden p-2">
+          <img src={profileImage} alt="image" className="w-full h-full object-cover rounded-full"/>
+        </div>
+    </div>
+   
     <div className="flex justify-center items-center">
       <div>
         <div>
@@ -80,10 +61,11 @@ const Profile = () => {
         </div>
 
         <div>
-          <Blogs allBlogs={userBlog} loading={loading} />
+          {/* <Blogs allBlogs={userBlog} loading={loading} /> */}
         </div>
       </div>
     </div>
+    </>
   );
 };
 

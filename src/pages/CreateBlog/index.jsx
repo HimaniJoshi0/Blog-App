@@ -8,6 +8,7 @@ import { notification } from "antd";
 import { services } from "services";
 import TextField from "components/inputField";
 import { useNavigate } from "react-router";
+import HeroSection from "components/hero-section";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -115,20 +116,15 @@ const CreateBlogForm = ({ setOpen }) => {
     } else {
       setFileUrl(null);
     }
-    // const reader = new FileReader();
-
-    // reader.onload = () => {
-    //   const base64String = reader.result;
-    //   console.log("base64String", base64String);
-    // };
-
-    // reader.readAsDataURL(file);
+  
   };
 
   return (
+    <>
+     <HeroSection title="COMPOSE"/>
     <div className="w-full p-6  flex justify-center">
+     
       <div className="w-full md:w-2/3">
-        <h2 className="md:text-2xl font-semibold">Create Blog</h2>
         <Formik
           initialValues={{
             title: "",
@@ -216,6 +212,7 @@ const CreateBlogForm = ({ setOpen }) => {
         </Formik>
       </div>
     </div>
+    </>
   );
 };
 

@@ -40,8 +40,22 @@ svg text {
   }
 }
 
-.hero-section {
+.hero-section-blogs {
   background-image: url("/public/images/bgimage.jpg");
+  background-position: bottom;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.363);
+}
+
+.hero-section-create {
+  background-image: url("/public/images/create.jpg");
+  background-position: bottom;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.363);
+}
+
+.hero-section-profile {
+  background-image: url("/public/images/profile.jpg");
   background-position: bottom;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.363);

@@ -47,7 +47,7 @@ const Navbar = () => {
     <div
       className={`sticky top-0 z-50 mt-6 w-full ${
         sticked ? "" : "px-6 md:px-10"
-      } transition-all	`}
+      } transition-all`}
     >
       <div
         className={`p-2 md:p-4 flex items-center justify-center shadow-xl bg-white ${

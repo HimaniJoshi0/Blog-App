@@ -11,9 +11,10 @@ import Navbar from "./components/Navbar";
 import Blog from "./pages/Blog";
 import Profile from "./pages/Profile";
 import "./App.css";
-import HeroSection from "components/hero-section";
+// import HeroSection from "components/hero-section";
 import CreateBlogForm from "pages/CreateBlog";
 import BlogView from "pages/BlogView";
+import Footer from "components/footer";
 
 const App = () => {
   const AppContent = () => {
@@ -26,7 +27,7 @@ const App = () => {
           <>
             {" "}
             <Navbar />
-            <HeroSection />
+         
           </>
         )}
         <Routes>
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/create-blog" element={<CreateBlogForm />} />
           <Route path="/blog-view/:id" element={<BlogView />} />
         </Routes>
+        <Footer />
       </React.Fragment>
     );
   };

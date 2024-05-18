@@ -1,5 +1,6 @@
-export const AnimatedText = () => {
-  let text = "THE BLOGS";
+export const AnimatedText = ({title}) => {
+  let text = title;
+  console.log("title",title)
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

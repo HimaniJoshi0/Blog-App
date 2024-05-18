@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Blogs from "../../components/Blogs";
 import {  Modal } from "antd";
-import { services } from "../../services";
+import { services } from "services";
 import ClientSlider from "components/crousal";
+import HeroSection from "components/hero-section";
 
 const Blog = () => {
   const [checkDetails, setCheckDetails] = useState();
@@ -34,6 +35,7 @@ const Blog = () => {
 
   return (
     <>
+       <HeroSection title="THE BLOGS"/>
       <div className="mt-6">{/* <h3>Recent Blogs</h3> */}</div>
       <div className="p-10 flex justify-center">
         <ClientSlider />
