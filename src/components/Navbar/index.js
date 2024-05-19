@@ -55,8 +55,8 @@ const Navbar = () => {
         }`}
       >
         <div className="w-full px-2 flex items-center justify-between  h-full">
-          <div>
-            <p className="font-bold text-xs md:text-xl">THE BLOGS</p>
+          <div onClick={()=>{navigate("/")}}>
+            <p className="font-bold text-xs md:text-xl cursor-pointer">THE BLOGS</p>
           </div>
           {checkDetails ? (
             <div className="flex items-center gap-2">

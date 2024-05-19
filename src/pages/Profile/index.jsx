@@ -4,7 +4,6 @@ import Blogs from "../../components/Blogs";
 import HeroSection from "components/hero-section";
 import profileImage from "assets/images/profileImage.png";
 
-
 const Profile = () => {
   const [user, setUser] = useState();
   const [userBlog, setuserBlog] = useState([]);
@@ -39,32 +38,28 @@ const Profile = () => {
     getBlogs(userDetails.id);
   }, []);
 
-
-
   return (
     <>
-    <div className="hero-section-profile h-[12rem] md:h-[9rem] lg:h-[21rem] -mt-[6rem] relative">
-        <div className="h-[12rem] w-[12rem] bg-slate-50 rounded-full absolute bottom-[-3.5rem] left-[20rem] overflow-hidden p-2">
-          <img src={profileImage} alt="image" className="w-full h-full object-cover rounded-full"/>
-        </div>
-    </div>
-   
-    <div className="flex justify-center items-center">
-      <div>
-        <div>
-          {user && (
-            <div>
-              <h1>{user.name}</h1>
-              <h1>{user.email}</h1>
-            </div>
-          )}
-        </div>
-
-        <div>
-          {/* <Blogs allBlogs={userBlog} loading={loading} /> */}
+      <div className="hero-section-profile h-[21rem] -mt-[6rem] relative">
+        <div className="h-[9rem] w-[9rem] md:h-[12rem] md:w-[12rem] bg-slate-50 rounded-full absolute bottom-[-4.7rem] md:bottom-[-6.2rem] left-[20%] overflow-hidden p-2">
+          <img
+            src={profileImage}
+            alt="image"
+            className="w-full h-full object-cover rounded-full"
+          />
         </div>
       </div>
-    </div>
+      <div className="mt-[7rem] ml-[22%]">
+        {user && (
+          <div>
+            <h1 className="text-xl">{user.name}</h1>
+            <h1 className="text-gray-400">{user.email}</h1>
+          </div>
+        )}
+      </div>
+      <div className="flex">
+        <Blogs allBlogs={userBlog} loading={loading} />{" "}
+      </div>
     </>
   );
 };
