@@ -28,11 +28,12 @@ const CreateBlogForm = ({ setOpen }) => {
   const handleSubmit = async (values) => {
     setLoader(true);
     // const user = JSON.parse(localStorage.getItem("user"));
+    // return console.log("values", values);
     const formData = new FormData();
     formData.append("user_id", 1);
     formData.append("summary", values.description);
     formData.append("title", values.title);
-    formData.append("categories", values.category);
+    formData.append("categories", JSON.stringify(values.category));
     formData.append("created_on", new Date().toISOString());
     formData.append("file", fieldValue);
     // const payload = {
@@ -116,102 +117,102 @@ const CreateBlogForm = ({ setOpen }) => {
     } else {
       setFileUrl(null);
     }
-  
   };
 
   return (
     <>
-     <HeroSection title="COMPOSE"/>
-    <div className="w-full p-6  flex justify-center">
-     
-      <div className="w-full md:w-2/3">
-        <Formik
-          initialValues={{
-            title: "",
-            description: "",
-            file: null,
-            category: [],
-          }}
-          validationSchema={validationSchema}
-          onSubmit={(values) => {
-            handleSubmit(values);
-          }}
-        >
-          {() => (
-            <Form className="flex flex-col gap-4 mt-4">
-              <TextField name="title" label="Title" type="text" />
-              <TextField name="description" label="Description" type="text" />
-              <Field name="category">
-                {({ field, form }) => (
-                  <Select
-                    className="h-[2.75rem] border rounded-md text-xs"
-                    {...field}
-                    mode="multiple"
-                    allowClear
-                    style={{ width: "100%" }}
-                    placeholder="Please select"
-                    onChange={(value) => form.setFieldValue("category", value)}
-                    onBlur={() => form.setFieldTouched("category", true)}
-                  >
-                    {options.map((option) => (
-                      <Option key={option.value} value={option.value}>
-                        {option.label}
-                      </Option>
-                    ))}
-                  </Select>
-                )}
-              </Field>
-              <ErrorMessage
-                name="category"
-                component="div"
-                className="text-red-600"
-              />
-
-              <Field name="file">
-                {({ field, form }) => (
-                  <input
-                    type="file"
-                    // {...field}
-                    onChange={(value) => {
-                      if (value.currentTarget.files[0]) {
-                        form.setFieldValue("file", value);
-                      } else {
-                        form.setFieldValue("file", null);
+      <HeroSection title="COMPOSE" />
+      <div className="w-full p-6  flex justify-center">
+        <div className="w-full md:w-2/3">
+          <Formik
+            initialValues={{
+              title: "",
+              description: "",
+              file: null,
+              category: [],
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+              handleSubmit(values);
+            }}
+          >
+            {() => (
+              <Form className="flex flex-col gap-4 mt-4">
+                <TextField name="title" label="Title" type="text" />
+                <TextField name="description" label="Description" type="text" />
+                <Field name="category">
+                  {({ field, form }) => (
+                    <Select
+                      className="h-[2.75rem] border rounded-md text-xs"
+                      {...field}
+                      mode="multiple"
+                      allowClear
+                      style={{ width: "100%" }}
+                      placeholder="Please select"
+                      onChange={(value) =>
+                        form.setFieldValue("category", value)
                       }
-                      handleChange(value);
-                    }}
+                      onBlur={() => form.setFieldTouched("category", true)}
+                    >
+                      {options.map((option) => (
+                        <Option key={option.value} value={option.value}>
+                          {option.label}
+                        </Option>
+                      ))}
+                    </Select>
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="category"
+                  component="div"
+                  className="text-red-600"
+                />
+
+                <Field name="file">
+                  {({ field, form }) => (
+                    <input
+                      type="file"
+                      // {...field}
+                      onChange={(value) => {
+                        if (value.currentTarget.files[0]) {
+                          form.setFieldValue("file", value);
+                        } else {
+                          form.setFieldValue("file", null);
+                        }
+                        handleChange(value);
+                      }}
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="file"
+                  component="div"
+                  className="text-red-600"
+                />
+                {fileUrl && (
+                  <img
+                    src={fileUrl}
+                    className="h-[20rem] w-[20rem] rounded-lg"
+                    alt="preview"
                   />
                 )}
-              </Field>
-              <ErrorMessage
-                name="file"
-                component="div"
-                className="text-red-600"
-              />
-              {fileUrl && (
-                <img
-                  src={fileUrl}
-                  className="h-[20rem] w-[20rem] rounded-lg"
-                  alt="preview"
-                />
-              )}
-              {loader ? (
-                <div className="example">
-                  <Spin />
-                </div>
-              ) : (
-                <Button
-                  className="border border-black font-semibold w-[4rem]"
-                  htmlType="submit"
-                >
-                  {loader ? <Spin /> : "Add"}
-                </Button>
-              )}
-            </Form>
-          )}
-        </Formik>
+                {false ? (
+                  <div className="example">
+                    <Spin />
+                  </div>
+                ) : (
+                  <Button
+                    className="border border-black font-semibold w-[4rem]"
+                    htmlType="submit"
+                  >
+                    {false ? <Spin /> : "Add"}
+                  </Button>
+                )}
+              </Form>
+            )}
+          </Formik>
+        </div>
       </div>
-    </div>
     </>
   );
 };

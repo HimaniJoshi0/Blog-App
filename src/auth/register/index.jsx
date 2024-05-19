@@ -59,7 +59,7 @@ const MyForm = () => {
         <img src={loginImg} alt="image" className="h-full" />
       </div>
 
-      <div className=" w-[50%] h-full flex justify-center items-center">
+      <div className=" md:w-[50%] h-full flex justify-center items-center">
         <div>
           <div className="mb-6">
             <h1 className="text-4xl font-bold ">Hi, Welcome to THE BLOG</h1>

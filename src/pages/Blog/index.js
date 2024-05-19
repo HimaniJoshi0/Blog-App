@@ -43,11 +43,11 @@ const Blog = () => {
       <div className=" w-full mt-6">
         <div className="w-full flex justify-center items-center">
           <div className="w-[90%] flex ">
-            {checkDetails && (
+            {/* {checkDetails && (
               <p onClick={() => setOpen(true)} className="cursor-pointer">
                 Create
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <Blogs allBlogs={allBlogs} loading={loading} />

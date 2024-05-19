@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/** external deps */
 import { useState, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,47 +6,10 @@ import dummy1 from "assets/images/dummy1.jpg";
 import dummy2 from "assets/images/dummy2.jpg";
 import dummy3 from "assets/images/dummy3.jpg";
 
-/** internal deps */
-// import { RArrow } from "@/assets/icons/RArrow";
-// import FirstSlide from "./slide1";
-// import { LArrow } from "@/assets/icons/LArrow";
 
-// const NextArr = ({ gotoNext }) => {
-//   return (
-//     <button
-//       aria-label="nextArrow"
-//       type="button"
-//       className=" group h-10 w-10 border border-black transition-all duration-700 hover:bg-black ease-in-out p-2 rounded-xl absolute right-4 md:right-12 lg:right-7 -bottom-4 md:-bottom-2 2xl:h-12 2xl:w-12"
-//       onClick={gotoNext}
-//     >
-//       {/* <RArrow svgClass="fill-black group-hover:fill-white" /> */}
-//     </button>
-//   );
-// };
-
-// const PrevArr = ({ gotoPrev }) => {
-//   return (
-//     <button
-//       aria-label="prevArrow"
-//       type="button"
-//       className=" group h-10 w-10 border border-black transition-all duration-700 hover:bg-black ease-in-out  p-2 rounded-xl absolute -bottom-4 md:-bottom-2 right-16 md:right-24 lg:right-20 2xl:h-12 2xl:w-12"
-//       onClick={gotoPrev}
-//     >
-//       {/* <LArrow svgClass="fill-black group-hover:fill-white" /> */}
-//     </button>
-//   );
-// };
 
 const ClientSlider = () => {
   const sliderRef = useRef();
-
-  // const gotoNext = () => {
-  //   return sliderRef.current.slickNext();
-  // };
-  // const gotoPrev = () => {
-  //   return sliderRef.current.slickPrev();
-  // };
-
   const [currentSlide, setCurrentSlide] = useState(0);
 
   var settings = {
@@ -67,8 +28,6 @@ const ClientSlider = () => {
         } `}
       ></div>
     ),
-    // nextArrow: <NextArr gotoNext={gotoNext} />,
-    // prevArrow: <PrevArr gotoPrev={gotoPrev} />,
   };
 
   const SliderData = [

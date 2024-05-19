@@ -3,6 +3,7 @@ import { services } from "../../services";
 import Blogs from "../../components/Blogs";
 import HeroSection from "components/hero-section";
 import profileImage from "assets/images/profileImage.png";
+import { ProfileIcon } from "assets/icons";
 
 const Profile = () => {
   const [user, setUser] = useState();
@@ -34,19 +35,26 @@ const Profile = () => {
     console.log("----userDetails-----", userDetails);
     if (userDetails) {
       setUser(userDetails);
+      getBlogs(userDetails.id);
     }
-    getBlogs(userDetails.id);
+   
   }, []);
 
   return (
     <>
       <div className="hero-section-profile h-[21rem] -mt-[6rem] relative">
         <div className="h-[9rem] w-[9rem] md:h-[12rem] md:w-[12rem] bg-slate-50 rounded-full absolute bottom-[-4.7rem] md:bottom-[-6.2rem] left-[50%] translate-x-[-50%] overflow-hidden p-2">
-          <img
-            src={profileImage}
-            alt="image"
-            className="w-full h-full object-cover rounded-full"
-          />
+         { user? (
+               <img
+               src={profileImage}
+               alt="image"
+               className="w-full h-full object-cover rounded-full"
+             />
+         ):(
+         <ProfileIcon classes="w-full h-full object-cover rounded-full"/> 
+         )
+          
+         } 
         </div>
       </div>
       <div className="mt-[7rem] flex justify-center items-center">

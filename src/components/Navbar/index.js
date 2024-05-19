@@ -6,6 +6,7 @@ const Navbar = () => {
   const location = useLocation();
   const [checkDetails, setCheckDetails] = useState();
   const [sticked, setSticked] = useState(false);
+  const[name,setName]= useState()
   const navigate = useNavigate();
 
   const logout = () => {
@@ -30,6 +31,7 @@ const Navbar = () => {
       ? JSON.parse(localStorage.getItem("user"))
       : null;
     console.log(userDetails);
+    setName(userDetails.name[0]);
     setCheckDetails(userDetails);
 
     window.addEventListener("scroll", function () {
@@ -65,7 +67,7 @@ const Navbar = () => {
                 content={content}
                 className="bg-black text-white w-8 h-8 md:h-10 md:w-10 rounded-full flex justify-center items-center"
               >
-                <Button>A</Button>
+                <Button>{name}</Button>
               </Popover>
               {!location.pathname.includes("create-blog") && (
                 <Button
