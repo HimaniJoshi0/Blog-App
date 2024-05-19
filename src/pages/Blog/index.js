@@ -41,7 +41,7 @@ const Blog = () => {
         <ClientSlider />
       </div>
       <div className=" w-full mt-6">
-        {/* <div className="w-full flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
           <div className="w-[90%] flex ">
             {checkDetails && (
               <p onClick={() => setOpen(true)} className="cursor-pointer">
@@ -49,7 +49,7 @@ const Blog = () => {
               </p>
             )}
           </div>
-        </div> */}
+        </div>
         <Blogs allBlogs={allBlogs} loading={loading} />
         <Modal
           title="Create Blog"

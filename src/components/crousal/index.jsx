@@ -73,7 +73,7 @@ const ClientSlider = () => {
 
   const SliderData = [
     {
-      text: "Convenience in monitoring past orders is notable, and the inclusion of  ",
+      text: "City Lights: Discovering the Enchanting Beauty and Vibrant Energy of Urban Nightscapes Around the World",
       spanText: "sales reports and profitability",
       remainText:
         "reports adds valuable functionalities. Quick response times and friendly and resourceful assistance",
@@ -83,7 +83,7 @@ const ClientSlider = () => {
       img: dummy1,
     },
     {
-      text: "Our dispatch team loves the real-time visibility and control your system provides. It has made  ",
+      text: "Exploring the Depths: The Wonders and Mysteries of the Ocean Unveiled",
       spanText: "coordinating deliveries",
       remainText: "and optimizing routes a much smoother process",
       author: "Winston Thomas",
@@ -92,7 +92,7 @@ const ClientSlider = () => {
       img: dummy2,
     },
     {
-      text: "Your CRM system has enhanced our client relationships. We now have a better understanding of their needs and can proactively address their concerns ",
+      text:"Deserts: Unveiling the Surreal Beauty and Hidden Wonders of the World's Arid Landscapes",
       spanText: ", leading to increased customer",
       remainText: "satisfaction",
       author: "Albert Flores",
@@ -111,7 +111,7 @@ const ClientSlider = () => {
           className="h-[20rem] object-cover w-full rounded-2xl"
           alt="image"
         />
-        <div className="absolute bg-[#00000088] h-[20rem] top-0 p-6 text-white text-xl font-semibold rounded-2xl overflow-hidden w-full text-left flex items-end">
+        <div className="absolute bg-[#00000088] h-[20rem] top-0 p-6 text-white md:text-xl  font-semibold rounded-2xl overflow-hidden w-full text-left flex items-end">
           {text}
         </div>
       </div>

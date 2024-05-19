@@ -4,9 +4,11 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import "dayjs/locale/en";
+import { VisitIcon } from "assets/icons";
 
 const Blogs = ({ allBlogs, loading }) => {
   let [authorname, setAuthorName] = useState();
+  let [imgHover, setImgHover] = useState(false);
 
   useEffect(() => {
     let name = localStorage.getItem("user")
@@ -22,13 +24,26 @@ const Blogs = ({ allBlogs, loading }) => {
   const renderBlogs = (item, key) => {
     return (
       <div className="bg-white max-h-[50rem] ">
-        <div className="bg-white flex justify-center items-start rounded-lg overflow-hidden">
+        <div
+          className="bg-white flex flex-col justify-center items-start rounded-lg overflow-hidden relative"
+          onMouseOver={(e) => setImgHover(true)}
+          onMouseLeave={(e) => setImgHover(false)}
+        >
           <img
             src={item.image}
             alt="image"
-            className="h-[30rem] object-cover"
+            className="h-[25rem] object-cover"
           ></img>
+          <div
+            className={`${
+              imgHover ? "block" : "hidden"
+            } bg-[#53515461] absolute top-0 w-full h-full flex justify-center items-center gap-2 transition-all`}
+          >
+            <p className="text-white text-lg font-semibold ">VISIT</p>
+            <VisitIcon classes="w-6 h-6 stroke-white"/>
+          </div>
         </div>
+ 
         <div className="mt-2">
           <div className="my-2 flex flex-row  font-bold text-purple-800 text-sm">
             <p>{authorname?.name} -</p>
@@ -40,20 +55,12 @@ const Blogs = ({ allBlogs, loading }) => {
           </div>
           <div className="my-2">
             <h1 className="text-xl font-bold">{item.title}</h1>
-            <p>{item.summary}</p>
+            <p class="text-base text-gray-700 font-normal multi-line-truncate">
+              {item.summary}
+            </p>
           </div>
           <div className="mt-2">
-            <div className="flex">
-              {/* {item.categories.map((item, values) => {
-                return (
-                  <div className=" mr-2 ">
-                    <div className="text-purple-800 p-1 border rounded-lg bg-purple-200 font-semibold">
-                      {item}
-                    </div>
-                  </div>
-                );
-              })} */}
-            </div>
+            <div className="flex"></div>
           </div>
         </div>
       </div>

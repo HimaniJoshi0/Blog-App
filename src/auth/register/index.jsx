@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import TextField from "../../components/inputField";
 import { notification } from "antd";
 import { services } from "../../services";
+import loginImg from "assets/images/login.jpg";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -22,7 +23,6 @@ const validationSchema = Yup.object().shape({
     .required("Confirm Password is required"),
 });
 
-  
 const MyForm = () => {
   const navigate = useNavigate();
 
@@ -35,8 +35,7 @@ const MyForm = () => {
           message: "Register Successfull",
           placement: "topRight",
         });
-        navigate("/login")
-         
+        navigate("/login");
       } else {
         notification.error({
           message: "Register Failed",
@@ -54,66 +53,78 @@ const MyForm = () => {
     }
   };
 
+  return (
+    <div className="flex justify-center items-center  h-screen w-full">
+      <div className="w-[50%] h-full justify-center items-center hidden md:flex">
+        <img src={loginImg} alt="image" className="h-full" />
+      </div>
 
-return (
-  <div className="flex justify-center items-center  h-screen w-full">     
-  <div className='bg-green-200 w-[50%] h-[100%] flex justify-center items-center'>
-   <h1>image</h1>
- </div>
-
- <div className=' w-[50%] h-full flex justify-center items-center'>
-    <div >
-        <div className='mb-6'>
-          <h1 className='text-4xl font-bold '>Hi, Welcome to THE BLOG</h1>
-          <p className='font-semibold mt-1'>Create  your account</p>
-        </div>
-    <Formik
-      initialValues={{
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirmPassword: "",
-      }}
-      validationSchema={validationSchema}
-      onSubmit={(values) => {
-        handleSubmit(values);
-      }}
-    >
-      {() => (
-        <Form>
-          <div className="mt-2">
-          <TextField name="name"  label="Name" type="text"/>
+      <div className=" w-[50%] h-full flex justify-center items-center">
+        <div>
+          <div className="mb-6">
+            <h1 className="text-4xl font-bold ">Hi, Welcome to THE BLOG</h1>
+            <p className="font-semibold mt-1">Create your account</p>
           </div>
+          <Formik
+            initialValues={{
+              name: "",
+              email: "",
+              phone: "",
+              password: "",
+              confirmPassword: "",
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values) => {
+              handleSubmit(values);
+            }}
+          >
+            {() => (
+              <Form>
+                <div className="mt-2">
+                  <TextField name="name" label="Name" type="text" />
+                </div>
 
-          <div className="mt-2">
-          <TextField name="email"  label="Email Address" type="email"/>
+                <div className="mt-2">
+                  <TextField name="email" label="Email Address" type="email" />
+                </div>
+
+                <div className="mt-2">
+                  <TextField name="phone" label="Contact Number" type="text" />
+                </div>
+
+                <div className="mt-2">
+                  <TextField name="password" label="Password" type="password" />
+                </div>
+
+                <div className="mt-2">
+                  <TextField
+                    name="confirmPassword"
+                    label="Confirm Password"
+                    type="password"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full p-3 text-white bg-black rounded-md font-semibold mt-6"
+                >
+                  Submit
+                </button>
+              </Form>
+            )}
+          </Formik>
+          <div className="my-3">
+            <p>
+              Already registered?{" "}
+              <Link to="/login" className="text-green-700 font-bold">
+                Login
+              </Link>
+            </p>
           </div>
-         
-         <div className="mt-2">
-         <TextField name="phone"  label="Contact Number" type="text"/>
-         </div>
-         
-        
-        <div className="mt-2">
-        <TextField name="password"  label="Password" type="password"/>
         </div>
-
-        <div className="mt-2">
-        <TextField name="confirmPassword"  label="Confirm Password" type="password"/>
-        </div>
-         
-          <button type="submit" className='w-full p-3 text-white bg-black rounded-md font-semibold mt-6'>Submit</button>
-        </Form>
-      )}
-    </Formik>
-    <div className='my-3'>
-      <p>Already registered? <Link to="/login" className='text-green-700 font-bold'>Login</Link></p>
+      </div>
     </div>
-  </div>
-  </div>
-  </div>
-)
+  );
 };
 
 export default MyForm;

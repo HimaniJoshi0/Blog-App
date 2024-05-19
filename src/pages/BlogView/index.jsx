@@ -27,7 +27,7 @@ const BlogView = () => {
   const renderCategoryChip = (item, index) => {
     console.log("item", item);
     return (
-      <div className="p-2 border border-green-600 text-white bg-green-300 rounded-full h-min">
+      <div className="p-2 border border-gray-600 text-black bg-gray-300 rounded-full h-min">
         {item}
       </div>
     );
@@ -37,7 +37,7 @@ const BlogView = () => {
     <>
       {" "}
       <div className="hero-section-profile h-[21rem] -mt-[6rem] relative">
-        <div className="h-[9rem] w-[9rem] md:h-[12rem] md:w-[12rem] bg-slate-50 rounded-full absolute bottom-[-4.7rem] md:bottom-[-6.2rem] left-[20%] overflow-hidden p-2">
+      <div className="h-[9rem] w-[9rem] md:h-[12rem] md:w-[12rem] bg-slate-50 rounded-full absolute bottom-[-4.7rem] md:bottom-[-6.2rem] left-[50%] translate-x-[-50%] overflow-hidden p-2">
           <img
             src={profileImage}
             alt="image"
@@ -46,30 +46,30 @@ const BlogView = () => {
         </div>
       </div>
       <div>
-        <div className="mt-[7rem] ml-[22%]">
+        <div className="mt-[7rem] flex justify-center items-center">
           <div>
-            <h1 className="text-xl">User</h1>
-            <h1 className="text-gray-400">test@mail.com</h1>
+            <h1 className="text-xl text-center">User</h1>
+            <h1 className="text-gray-400 text-center">test@mail.com</h1>
           </div>
         </div>
         {currBlog ? (
           <div className="flex flex-col gap-4 p-4 md:p-10 items-center min-h-[calc(100vh-16.625rem)]">
             <div>
-              <div className="flex gap-1">
-                {currBlog?.categories?.map(renderCategoryChip)}
-              </div>
+              
               <div className="mt-6">
-                <h1 className="text-2xl font-semibold">{currBlog.title}</h1>
+                <h1 className="text-3xl font-semibold text-center">{currBlog.title}</h1>
               </div>
-
               <div className="mt-4">
                 <img
                   src={currBlog.image}
-                  className="max-h-[40rem]"
+                  className="max-h-[30rem]"
                   alt="Blog Image"
                 />
               </div>
-              <div className="max-w-[40rem]">
+              <div className="flex gap-1 mt-4">
+                {currBlog?.categories?.map(renderCategoryChip)}
+              </div>
+              <div className="max-w-[40rem] mt-2">
                 <h1 className="text-lg">{currBlog.summary}</h1>
               </div>
             </div>

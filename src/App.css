@@ -60,3 +60,10 @@ svg text {
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.363);
 }
+
+.multi-line-truncate {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+}

@@ -21,6 +21,7 @@ const App = () => {
     const location = useLocation();
     const check =
       location.pathname === "/login" || location.pathname === "/register";
+
     return (
       <React.Fragment>
         {!check && (
@@ -38,7 +39,7 @@ const App = () => {
           <Route path="/create-blog" element={<CreateBlogForm />} />
           <Route path="/blog-view/:id" element={<BlogView />} />
         </Routes>
-        <Footer />
+       {!check &&  <Footer/> }
       </React.Fragment>
     );
   };

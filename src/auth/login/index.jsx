@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import TextField from "../../components/inputField";
 import { services } from "../../services";
 import { notification } from "antd";
+import loginImg from "assets/images/login.jpg";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -47,14 +48,10 @@ const MyForm = () => {
   };
 
   return (
-    <div
-      className="flex justify-center items-center  h-screen w-full"
-      style={{ backgroundColor: "#26bbed" }}
-    >
+    <div className="flex justify-center items-center  h-screen w-full">
       {" "}
-      {/*min-h-screen h-full not working */}
-      <div className="bg-green-200 w-[50%] h-[100%] flex justify-center items-center">
-        <h1>image</h1>
+      <div className="w-[50%] h-full justify-center items-center hidden md:flex">
+        <img src={loginImg} alt="image" className="h-full" />
       </div>
       <div className=" w-[50%] h-full flex justify-center items-center">
         <div>
