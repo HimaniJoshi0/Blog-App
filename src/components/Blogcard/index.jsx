@@ -5,6 +5,7 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import "dayjs/locale/en";
 import { VisitIcon } from "assets/icons";
+import { Link } from "react-router-dom";
 
 
 const Blogcard = ({item,key}) => {
@@ -12,6 +13,7 @@ const Blogcard = ({item,key}) => {
  dayjs.extend(localizedFormat);
  dayjs.extend(customParseFormat);
  dayjs.locale("en");
+ console.log("id-----",item.blog_id)
 
   return (
           <div className="bg-white max-h-[50rem] ">
@@ -25,14 +27,18 @@ const Blogcard = ({item,key}) => {
                 alt="image"
                 className="h-[25rem] object-cover"
               ></img>
+             
               <div
                 className={`${
                   imgHover ? "block" : "hidden"
                 } bg-[#53515461] absolute top-0 w-full h-full flex justify-center items-center gap-2 transition-all`}
               >
+                 <Link to={`/blog-view/${item.blog_id}`} className="flex justify-center items-center ">
                 <p className="text-white text-lg font-semibold ">VISIT</p>
                 <VisitIcon classes="w-6 h-6 stroke-white"/>
+                </Link>
               </div>
+              
             </div>
      
             <div className="mt-2">

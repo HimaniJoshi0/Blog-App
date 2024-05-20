@@ -1,10 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { services } from "../../services";
-// import dayjs from "dayjs";
-// import localizedFormat from "dayjs/plugin/localizedFormat";
-// import customParseFormat from "dayjs/plugin/customParseFormat";
-// import "dayjs/locale/en";
-// import { VisitIcon } from "assets/icons";
 import Blogcard from "components/Blogcard";
 
 const Blogs = ({ allBlogs, loading }) => {
