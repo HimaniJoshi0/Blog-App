@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { Button, Select, Space } from "antd";
@@ -24,26 +24,18 @@ const CreateBlogForm = ({ setOpen }) => {
   const [fieldValue, setFieldValue] = useState();
   const [loader, setLoader] = useState(false);
   const [fileUrl, setFileUrl] = useState(null);
+  const [userId, setUserId] = useState();
 
   const handleSubmit = async (values) => {
     setLoader(true);
-    // const user = JSON.parse(localStorage.getItem("user"));
-    // return console.log("values", values);
     const formData = new FormData();
-    formData.append("user_id", 1);
+    formData.append("user_id", userId);
     formData.append("summary", values.description);
     formData.append("title", values.title);
     formData.append("categories", JSON.stringify(values.category));
     formData.append("created_on", new Date().toISOString());
     formData.append("file", fieldValue);
-    // const payload = {
-    //   user_id: user?.id || 1,
-    //   title: values.title,
-    //   summary: values.description,
-    //   categories: values.category,
-    //   created_on: new Date().toISOString(),
-    //   image: fieldValue,
-    // };
+
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}add-blog`,
@@ -118,6 +110,12 @@ const CreateBlogForm = ({ setOpen }) => {
       setFileUrl(null);
     }
   };
+
+  useEffect(() => {
+    const userDetails = JSON.parse(localStorage.getItem("user"));
+    console.log("user id", userDetails.id);
+    setUserId(userDetails.id)
+  }, []);
 
   return (
     <>
