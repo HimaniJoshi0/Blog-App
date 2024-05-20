@@ -25,7 +25,7 @@ const Blogcard = ({item,key}) => {
               <img
                 src={item.image}
                 alt="image"
-                className="h-[25rem] object-cover"
+                className="h-[25rem] object-cover w-full"
               ></img>
              
               <div
@@ -57,7 +57,7 @@ const Blogcard = ({item,key}) => {
                 </p>
               </div>
               <div className="my-2">
-                <h1 className="text-xl font-bold">{item.title}</h1>
+                <h1 className="text-xl font-bold multi-line-truncate-heading ">{item.title}</h1>
                 <p class="text-base text-gray-700 font-normal multi-line-truncate">
                   {item.summary}
                 </p>

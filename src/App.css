@@ -67,3 +67,9 @@ svg text {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; /* Number of lines to show */
 }
+.multi-line-truncate-heading {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+}
