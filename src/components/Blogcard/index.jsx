@@ -30,12 +30,12 @@ const Blogcard = ({item,key}) => {
              
               <div
                 className={`${
-                  imgHover ? "md:flex" : "md:flex"
+                  imgHover ? "md:flex" : "md:hidden"
                 } md:bg-[#53515461] absolute top-0 botton-10 w-full h-full gap-2 md:transition-all justify-center items-center`}
               >
                  <Link to={`/blog-view/${item.blog_id}`}>
                   <div  className=" flex justify-end items-center">
-                    <div className=" flex justify-end items-center bg-purple-700 rounded-md m-1 p-1">
+                    <div className=" flex justify-end items-center bg-gray-700 rounded-md m-1 p-1">
                     <p className="md:text-white md:text-lg text-xxs font-semibold text-white ">VISIT</p>
                    <VisitIcon classes="w-6 h-6 stroke-white"/>
                     </div>
@@ -49,7 +49,7 @@ const Blogcard = ({item,key}) => {
      
             <div className="mt-2">
               <div className="my-2 flex flex-row  font-bold text-purple-800 text-sm">
-                <p>{item.users.name}-</p>
+                <p>{item?.users?.name}-</p>
                 <p className="font-bold text-purple-800 text-sm ml-2">
                   {dayjs(item.created_on, "YYYY-MM-DD h:mma").format(
                     "MMMM D, YYYY"

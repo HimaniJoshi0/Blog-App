@@ -12,7 +12,24 @@ import HeroSection from "components/hero-section";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
-  description: Yup.string().required("Description is required"),
+  description: Yup.string()
+    .required("Description is required"),
+    // .test(
+    //   'min-words',
+    //   'Description must be at least 100 words',
+    //   function (value) {
+    //     const words = value ? value.trim().split(/\s+/) : [];
+    //     return words.length >= 50;
+    //   }
+    // )
+    // .test(
+    //   'max-words',
+    //   'Description cannot exceed 200 words',
+    //   function (value) {
+    //     const words = value ? value.trim().split(/\s+/) : [];
+    //     return words.length <= 200;
+    //   }
+    // ),
   file: Yup.mixed().required("Please select a file"),
   category: Yup.array()
     .required("Category is required")
