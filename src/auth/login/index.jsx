@@ -50,7 +50,7 @@ const MyForm = () => {
   return (
     <div className="flex justify-center items-center  h-screen w-full">
       <div className="w-[50%] h-full justify-center items-center hidden md:flex">
-        <img src={loginImg} alt="image" className="h-full" />
+        <img src={loginImg} alt="image" className="w-full" />
       </div>
       <div className=" md:w-[50%] h-full flex justify-center items-center">
         <div className=" md:p-0 p-6">
