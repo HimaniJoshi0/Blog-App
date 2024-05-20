@@ -11,6 +11,7 @@ const BlogView = () => {
       const response = await services("get", null, `blogs?id=${id}`);
       if (response.status) {
         setCurrBlog(response.data[0]);
+        console.log("curren t data",response.data[0] )
       } else {
         console.log("something went wrong");
       }
@@ -46,12 +47,14 @@ const BlogView = () => {
         </div>
       </div>
       <div>
+        {currBlog && 
         <div className="mt-[7rem] flex justify-center items-center">
           <div>
-            <h1 className="text-xl text-center">User</h1>
-            <h1 className="text-gray-400 text-center">test@mail.com</h1>
+            <h1 className="text-xl text-center">{currBlog.users.name}</h1>
+            <h1 className="text-gray-400 text-center">{currBlog.users.email}</h1>
           </div>
         </div>
+          }
         {currBlog ? (
           <div className="flex flex-col gap-4 p-4 md:p-10 items-center min-h-[calc(100vh-16.625rem)]">
             <div>
