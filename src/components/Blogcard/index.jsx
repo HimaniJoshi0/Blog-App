@@ -30,12 +30,18 @@ const Blogcard = ({item,key}) => {
              
               <div
                 className={`${
-                  imgHover ? "block" : "hidden"
-                } bg-[#53515461] absolute top-0 w-full h-full flex justify-center items-center gap-2 transition-all`}
+                  imgHover ? "md:flex" : "md:flex"
+                } md:bg-[#53515461] absolute top-0 botton-10 w-full h-full gap-2 md:transition-all justify-center items-center`}
               >
-                 <Link to={`/blog-view/${item.blog_id}`} className="flex justify-center items-center ">
-                <p className="text-white text-lg font-semibold ">VISIT</p>
-                <VisitIcon classes="w-6 h-6 stroke-white"/>
+                 <Link to={`/blog-view/${item.blog_id}`}>
+                  <div  className=" flex justify-end items-center">
+                    <div className=" flex justify-end items-center bg-purple-700 rounded-md m-1 p-1">
+                    <p className="md:text-white md:text-lg text-xxs font-semibold text-white ">VISIT</p>
+                   <VisitIcon classes="w-6 h-6 stroke-white"/>
+                    </div>
+                 
+                  </div>
+          
                 </Link>
               </div>
               
