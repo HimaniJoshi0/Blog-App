@@ -57,7 +57,7 @@ const BlogView = () => {
           }
         {currBlog ? (
           <div className="flex flex-col gap-4 p-4 md:p-10 items-center min-h-[calc(100vh-16.625rem)]">
-            <div> 
+            <div className="max-w-[40rem]"> 
               <div className="mt-6">
                 <h1 className="text-3xl font-semibold max-w-[40rem]">{currBlog.title}</h1>
               </div>
