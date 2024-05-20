@@ -10,12 +10,12 @@ const Blogs = ({ allBlogs, loading }) => {
   let [authorname, setAuthorName] = useState();
   let [imgHover, setImgHover] = useState(false);
 
-  useEffect(() => {
-    let name = localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
-      : null;
-    setAuthorName(name);
-  }, []);
+  // useEffect(() => {
+  //   let name = localStorage.getItem("user")
+  //     ? JSON.parse(localStorage.getItem("user"))
+  //     : null;
+  //   setAuthorName(name);
+  // }, []);
 
   dayjs.extend(localizedFormat);
   dayjs.extend(customParseFormat);
@@ -46,7 +46,7 @@ const Blogs = ({ allBlogs, loading }) => {
  
         <div className="mt-2">
           <div className="my-2 flex flex-row  font-bold text-purple-800 text-sm">
-            <p>{authorname?.name} -</p>
+            <p>{item.users.name}-</p>
             <p className="font-bold text-purple-800 text-sm ml-2">
               {dayjs(item.created_on, "YYYY-MM-DD h:mma").format(
                 "MMMM D, YYYY"
