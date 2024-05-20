@@ -60,10 +60,10 @@ const MyForm = () => {
       </div>
 
       <div className=" md:w-[50%] h-full flex justify-center items-center">
-        <div>
+        <div className="md:p-0 p-6">
           <div className="mb-6">
-            <h1 className="text-4xl font-bold ">Hi, Welcome to THE BLOG</h1>
-            <p className="font-semibold mt-1">Create your account</p>
+            <h1 className="md:text-4xl font-bold text-2xl ">Hi, Welcome to THE BLOG</h1>
+            <p className="md:font-semibold mt-1 sm:font-medium">Create your account</p>
           </div>
           <Formik
             initialValues={{

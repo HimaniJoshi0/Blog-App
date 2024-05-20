@@ -31,7 +31,10 @@ const Navbar = () => {
       ? JSON.parse(localStorage.getItem("user"))
       : null;
     console.log(userDetails);
-    setName(userDetails.name[0]);
+    if(userDetails){
+      setName(userDetails.name[0]);
+    }
+    
     setCheckDetails(userDetails);
 
     window.addEventListener("scroll", function () {
