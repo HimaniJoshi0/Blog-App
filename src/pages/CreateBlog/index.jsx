@@ -12,9 +12,19 @@ import HeroSection from "components/hero-section";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
-  description: Yup.string()
-    .test("len", "min 20 words", (val) => val?.split(" ").length >= 20)
-    .test("len", "max 100 words", (val) => val?.split(" ").length <= 100),
+  description:Yup.string()
+  .required("Description is required")
+  .test(
+    'minWords',
+    'Description must be at least 20 words',
+    value => value && value.split(' ').filter(word => word.length > 0).length >= 20
+  )
+  .test(
+    'maxWords',
+    'Description must be no more than 100 words',
+    value => value && value.split(' ').filter(word => word.length > 0).length <= 100
+  ),
+
   file: Yup.mixed().required("Please select a file"),
   category: Yup.array()
     .required("Category is required")
